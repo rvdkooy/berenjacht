@@ -1,0 +1,46 @@
+.App {
+  text-align: center;
+}
+
+body {
+  background-image: url('./img/background.jpg');
+}
+
+header {
+  text-align: center;
+  position: fixed;
+  height: 70px;
+  width: 100%;
+  background-color: green;
+  color: white;
+}
+
+header h1 {
+  margin-top: 10px;
+}
+header .backbutton {
+  position: absolute;
+  left: 15px;
+  top: 20px;
+}
+
+main {
+  padding-top: 80px;
+}
+
+.levelicon {
+  position: relative;
+}
+
+.levelicon .text {
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+right: 0;
+  top: -71px;
+  color: black;
+  font-size: 40px;
+  text-align: center;
+  font-weight: bold;
+}
