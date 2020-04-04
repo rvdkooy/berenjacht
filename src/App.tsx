@@ -87,7 +87,7 @@ function App() {
   }
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={'/berenjacht'}>
       <div className="App">
         <Switch>
           <Route exact path="/">
