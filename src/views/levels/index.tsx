@@ -1,24 +1,30 @@
 import React from 'react';
-import { useHistory, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { AppState } from '../../App';
 
-const Levels = () => {
-    const history = useHistory();
-    const nrOfLevels = 50;
-
-    const icons = [];
-    for (let level = 1; level <= nrOfLevels; level++) {
-        icons.push(
-            <Link key={level} className="levelicon" to="/bears">
+const Levels = (props: { appState: AppState, reset: () => void }) => {
+    const icons = props.appState.levels.map(l => {
+        if (l.state === 'active' || l.state === 'finished') {
+            return (<Link key={l.number} className="levelicon" to={`/bears/${l.number}`}>
                 <img
                     width="120px"
-                    alt={'Level: ' + level}
+                    alt={'Level: ' + l.number}
                     src={require('../../img/level_icon.png')}
                 />
-                <span className="text">{ level }</span>
-            </Link>
-        )
-
-    }
+                <span className="text">{l.number}</span>
+            </Link>)
+        } else {
+            return (
+                <div className="levelicon" key={l.number}>
+                    <img
+                        width="120px"
+                        alt={'Level: ' + l.number}
+                        src={require('../../img/level_icon_disabled.png')}
+                    />
+                </div>
+            );
+        }
+    });
 
     return (
         <div>
@@ -29,6 +35,7 @@ const Levels = () => {
                 {
                     icons
                 }
+                <button className="button" onClick={() => props.reset()}>Begin opnieuw</button>
             </main>
         </div>
     )
