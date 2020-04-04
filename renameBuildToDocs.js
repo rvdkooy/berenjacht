@@ -1,3 +1,6 @@
 var fs = require('fs');
+var rimraf = require('rimraf');
 
-fs.renameSync('./build', './docs')
+rimraf('./docs', () => {
+    fs.renameSync('./build', './docs')
+});
